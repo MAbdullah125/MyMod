@@ -1,0 +1,49 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven { url = 'https://maven.minecraftforge.net/' }
+    }
+}
+
+dependencyResolutionManagement {
+    versionCatalogs {
+        libs {
+            plugin('apt', 'com.diffplug.eclipse.apt').version('4.2.0')
+
+            library('forgespi', 'net.minecraftforge:forgespi:7.1.5') 
+            library('modlauncher', 'net.minecraftforge:modlauncher:10.2.4') 
+            library('securemodules', 'net.minecraftforge:securemodules:2.2.21') 
+            library('unsafe', 'net.minecraftforge:unsafe:0.9.2')
+            library('accesstransformers', 'net.minecraftforge:accesstransformers:8.2.2')
+            library('coremods', 'net.minecraftforge:coremods:5.2.6')
+            library('eventbus', 'net.minecraftforge:eventbus:6.2.27')
+            library('typetools', 'net.jodah:typetools:0.6.3') 
+            library('mergetool-api', 'net.minecraftforge:mergetool-api:1.0')
+            library('mixin', 'org.spongepowered:mixin:0.8.7')
+            library('nulls', 'org.jetbrains:annotations:24.1.0') 
+            library('slf4j-api', 'org.slf4j:slf4j-api:2.0.7')
+        }
+    }
+}
+
+rootProject.name = 'ForgeRoot'
+
+include 'fmlloader'
+include 'fmlcore'
+include 'mclanguage'
+include 'javafmllanguage'
+include 'lowcodelanguage'
+include 'fmlearlydisplay'
+
+include ':mcp'
+project(":mcp").projectDir = file("projects/mcp")
+
+include ':forge'
+project(":forge").projectDir = file("projects/forge")
+project(':forge').buildFileName = '../../build_forge.gradle'
+
+if (!System.env.TEAMCITY_VERSION) {
+    include ':clean'
+    project(':clean').projectDir = file('projects/clean')
+    project(':clean').buildFileName = '../../build_clean.gradle'
+}

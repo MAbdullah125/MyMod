@@ -1,0 +1,21 @@
+modLoader="javafml"
+loaderVersion="[43,)"
+license="MIT"
+
+[[mods]]
+modId="opondeath"  # 🔹 First mod's unique ID
+version="1.0.0"
+displayName="OponDeath Mod"
+authors="MAbdullahAFC"
+description='''
+This is the OponDeath mod. Customize this description.
+'''
+
+[[mods]]
+modId="hotbarsurvival"  # 🔹 Second mod's unique ID
+version="1.0.0"
+displayName="Hotbar Survival Mod"
+authors="MAbdullahAFC"
+description='''
+This is the Hotbar Survival mod. Customize this description.
+'''
